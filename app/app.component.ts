@@ -18,7 +18,7 @@ import {AddEatenComponent} from './add-eaten.component';
       <div class="row">
         <h2> I Ate This...</h2>
         <div class="col-md-6">
-          <add-eaten (newEats)="addRestaurant(newEats)"></add-eaten>
+          <add-eaten (newEats)="addEaten($event)"></add-eaten>
         </div>
 
         <eaten-list [eatenList]="eaten"  (onEatenSelect)="eatenWasSelected($event)"></eaten-list>
@@ -29,6 +29,7 @@ import {AddEatenComponent} from './add-eaten.component';
 
 export class AppComponent{
   public eaten: Eaten[];
+  public newEats: Eaten;
     constructor(){
       this.eaten = [
         new Eaten("Celery", "Crunchy, yet wet, but bland", 1),
