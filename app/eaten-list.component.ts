@@ -7,13 +7,17 @@ import {HealthyPipe} from './healthy.pipe';
 
 @Component({
   selector: 'eaten-list',
-  inputs: ['eatenList'],
+  inputs: ['eatenList', 'healthiness'],
   outputs: ['onEatenSelect'],
   pipes: [HealthyPipe],
   directives: [EatenDisplayComponent, EatenDetailsComponent],
   template: `
-
-    <div *ngFor="#currentEaten of eatenList">
+    <div>
+    <button type="button" (click)="toggleClickedHealth('all')" value='all'>Everything</button>
+    <button type="button" (click)="toggleClickedHealth('good')" value='good' >The Good</button>
+    <button type="button" (click)="toggleClickedHealth('bad')" value='bad' >The Bad</button>
+    </div>
+    <div *ngFor="#currentEaten of eatenList | healthy: healthiness">
       <eaten-display (click)="eatenClicked(currentEaten)" [class.selected]="currentEaten === selectedEaten" [eaten]="currentEaten"></eaten-display>
       <eaten-details *ngIf="currentEaten === selectedEaten" [eaten]="currentEaten"></eaten-details>
     </div>
@@ -24,6 +28,7 @@ export class EatenListComponent {
   public eatenList: Eaten[];
   public onEatenSelect: EventEmitter<Eaten>;
   public selectedEaten: Eaten;
+  public healthiness: string ="all";
 
 
   constructor(){
@@ -33,6 +38,10 @@ export class EatenListComponent {
   eatenClicked(clickedEaten: Eaten){
     this.selectedEaten = clickedEaten;
     this.onEatenSelect.emit(clickedEaten);
+  }
+  toggleClickedHealth(healthChoice){
+    this.healthiness = healthChoice;
+    console.log(this.healthiness);
   }
 
 }

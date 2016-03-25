@@ -5,3 +5,6 @@ h1 {
 .selected{
   color: #22bdf0;
 }
+.jumbotron {
+  text-align: center;
+}

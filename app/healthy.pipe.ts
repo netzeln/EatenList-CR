@@ -8,7 +8,18 @@ import {Eaten} from './eaten.model';
 })
 export class HealthyPipe implements PipeTransform {
   transform(input: Eaten[], args) {
-
-
+    var desiredHealth = args[0];
+    console.log(desiredHealth);
+    if(desiredHealth === "good"){
+      return input.filter((eaten)=>{
+        return eaten.calories <= 300;
+      })
+    }else if(desiredHealth === "bad"){
+      return input.filter((eaten)=>{
+        return eaten.calories > 300;
+      })
+    }else{
+      return input;
+    }
   }
 }
