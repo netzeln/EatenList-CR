@@ -14,6 +14,7 @@ import {HealthyPipe} from './healthy.pipe';
   directives: [EatenDisplayComponent, EatenDetailsComponent],
   template: `
     <div class="col-md-6">
+    <h2>...<em>and</em> This</h2>
       <div class="btn-group" role="group">
       <button type="button" class="btn btn-info"(click)="toggleClickedHealth('all')" value='all'>Everything</button>
       <button type="button"class="btn btn-success" (click)="toggleClickedHealth('good')" value='good' >The Good</button>

@@ -8,12 +8,13 @@ import {Eaten} from './eaten.model';
     <div>
       <h4>What went in your face?</h4>
       <form>
-        <label>Food</label>
-        <input type="text" placeholder="food" #newFood>
-        <label>How'd That work out for you?</label>
-        <input type="text" placeholder="what did you think?" #newDetails>
-        <label>Calories?</label>
-        <input type="number" min="0" placeholder="how many calories" #newCalories>
+
+        <label for="food>">Food</label>
+        <input type="text" id="food" placeholder="food" #newFood><br>
+        <label for="deets">How'd That work out for you?</label>
+        <input type="text" id="deets" placeholder="what did you think?" #newDetails><br>
+        <label for='cals'>Calories?</label>
+        <input type="number" id="cals" min="0" placeholder="how many calories" #newCalories>
         <button (click)="addEaten(newFood, newDetails, newCalories)" class="btn btn-warning">Log it</button>
       </form>
     </div>
