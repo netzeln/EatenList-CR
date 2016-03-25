@@ -3,7 +3,7 @@ import {Eaten} from './eaten.model';
 
 @Component({
   selector: 'eaten-display',
-  imports: ['eaten'] ,
+  inputs: ['eaten'],
   template: `
     <h3><strong>{{eaten.name}}</strong></h3>
   `
@@ -11,5 +11,5 @@ import {Eaten} from './eaten.model';
 
 
 export class EatenDisplayComponent{
-  public eaten: Eaten
+  public eaten: Eaten;
 }
