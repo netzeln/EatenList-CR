@@ -18,7 +18,7 @@ import {AddEatenComponent} from './add-eaten.component';
       <div class="row">
         <h2> I Ate This...</h2>
         <div class="col-md-6">
-          <add-eaten (newEats)="addRestaurant(newEats)" [newEats]="newEats"></add-eaten>
+          <add-eaten (newEats)="addRestaurant(newEats)"></add-eaten>
         </div>
 
         <eaten-list [eatenList]="eaten"  (onEatenSelect)="eatenWasSelected($event)"></eaten-list>
@@ -42,7 +42,7 @@ export class AppComponent{
 
     }
     addEaten(newEats: Eaten):void{
-      console.log(newEats);
+      console.log(this.eaten);
       this.eaten.push(newEats);
     }
 }
