@@ -14,7 +14,7 @@ import {AddEatenComponent} from './add-eaten.component';
   directives: [EatenDisplayComponent, EatenDetailsComponent, AddEatenComponent],
   template: `
   <div class="col-md-6">
-    <add-eaten (newEats)="addEats($event)" ></add-eaten>
+    <add-eaten (submitNewEaten)="addEaten($event)" ></add-eaten>
   </div>
 
     <div class="col-md-6">
@@ -50,9 +50,9 @@ export class EatenListComponent {
     this.healthiness = healthChoice;
 
   }
-  addEaten(newEats: Eaten):void{
-    console.log(newEats);
-    // this.eaten.push(newEats);
+  addEaten(submitNewEaten: Eaten):void{
+    console.log(submitNewEaten);
+    this.eatenList.push(submitNewEaten);
   }
 
 }
