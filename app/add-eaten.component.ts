@@ -1,11 +1,10 @@
 import {Component, EventEmitter} from 'angular2/core';
 import {Eaten} from './eaten.model';
-import {AppComponent} from './app.component';
+
 
 @Component({
   selector: 'add-eaten',
   outputs:['submitNewEaten'],
-  directives: [AppComponent],
   template:`
     <div>
       <h4>What went in your face?</h4>
@@ -24,7 +23,7 @@ import {AppComponent} from './app.component';
 })
 
 export class AddEatenComponent{
-  public submitNewEaten = EventEmitter<Eaten>;
+  public submitNewEaten: EventEmitter<Eaten>;
 
   constructor (){
     this.submitNewEaten = new EventEmitter();
