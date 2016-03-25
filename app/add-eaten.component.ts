@@ -22,7 +22,7 @@ import {Eaten} from './eaten.model';
 })
 
 export class AddEatenComponent{
-  public submitNewEaten : EventEmitter<Eaten>;
+  public submitNewEaten: EventEmitter<Eaten>;
 
   constructor (){
     this.submitNewEaten = new EventEmitter();
@@ -41,6 +41,5 @@ export class AddEatenComponent{
       inputDetails.value="";
       inputCalories.value=""
     }
-    console.log(newEaten);
   }
 }

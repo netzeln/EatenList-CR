@@ -3,7 +3,7 @@ import {Eaten} from './eaten.model';
 import {EatenDisplayComponent} from './eaten-display.component';
 import {EatenDetailsComponent} from './eaten-details.component';
 import {HealthyPipe} from './healthy.pipe';
-import {AddEatenComponent} from './add-eaten.component';
+
 
 
 @Component({
@@ -11,12 +11,8 @@ import {AddEatenComponent} from './add-eaten.component';
   inputs: ['eatenList', 'healthiness'],
   outputs: ['onEatenSelect'],
   pipes: [HealthyPipe],
-  directives: [EatenDisplayComponent, EatenDetailsComponent, AddEatenComponent],
+  directives: [EatenDisplayComponent, EatenDetailsComponent],
   template: `
-  <div class="col-md-6">
-    <add-eaten (submitNewEaten)="addEaten($event)" ></add-eaten>
-  </div>
-
     <div class="col-md-6">
       <div class="btn-group" role="group">
       <button type="button" class="btn btn-info"(click)="toggleClickedHealth('all')" value='all'>Everything</button>
@@ -50,9 +46,6 @@ export class EatenListComponent {
     this.healthiness = healthChoice;
 
   }
-  addEaten(submitNewEaten: Eaten):void{
-    console.log(submitNewEaten);
-    this.eatenList.push(submitNewEaten);
-  }
+
 
 }

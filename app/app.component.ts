@@ -16,7 +16,9 @@ import {AddEatenComponent} from './add-eaten.component';
     <div class="container">
       <div class="row">
         <h2> I Ate This...</h2>
-
+        <div class="col-md-6">
+          <add-eaten (submitNewEaten)="addEaten($event)"></add-eaten>
+        </div>
 
         <eaten-list [eatenList]="eaten"  (onEatenSelect)="eatenWasSelected($event)"></eaten-list>
       </div>
@@ -37,6 +39,10 @@ export class AppComponent{
 
     eatenWasSelected(clickedEaten: Eaten):void{
 
+    }
+
+    addEaten(newEats: Eaten):void{
+      this.eaten.push(newEats);
     }
 
 }
