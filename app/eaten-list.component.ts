@@ -8,10 +8,13 @@ import {HealthyPipe} from './healthy.pipe';
 @Component({
   selector: 'eaten-list',
   inputs: ['eatenList'],
-  directives: [EatenDisplayComponent, EatenDetailsComponent, HealthyPipe],
+  outputs: ['onEatenSelect'],
+  pipes: [HealthyPipe],
+  directives: [EatenDisplayComponent, EatenDetailsComponent],
   template: `
-    <div class="">
-      <eaten-display></eaten-display>
+
+    <div *ngFor="#currentEaten of eatenList">
+      <eaten-display (click)="eatenClicked(currentEaten)" [class.selected]="currentEaten === selectedEaten" [eaten]="currentEaten"></eaten-display>
       <eaten-details *ngIf="currentEaten === selectedEaten" [eaten]="currentEaten"></eaten-details>
     </div>
   `
@@ -19,7 +22,17 @@ import {HealthyPipe} from './healthy.pipe';
 
 export class EatenListComponent {
   public eatenList: Eaten[];
+  public onEatenSelect: EventEmitter<Eaten>;
+  public selectedEaten: Eaten;
 
-  constructor(){}
+
+  constructor(){
+    this.onEatenSelect = new EventEmitter();
+  }
+
+  eatenClicked(clickedEaten: Eaten){
+    this.selectedEaten = clickedEaten;
+    this.onEatenSelect.emit(clickedEaten);
+  }
 
 }
