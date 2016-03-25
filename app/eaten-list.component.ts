@@ -12,14 +12,16 @@ import {HealthyPipe} from './healthy.pipe';
   pipes: [HealthyPipe],
   directives: [EatenDisplayComponent, EatenDetailsComponent],
   template: `
-    <div>
-    <button type="button" (click)="toggleClickedHealth('all')" value='all'>Everything</button>
-    <button type="button" (click)="toggleClickedHealth('good')" value='good' >The Good</button>
-    <button type="button" (click)="toggleClickedHealth('bad')" value='bad' >The Bad</button>
-    </div>
-    <div *ngFor="#currentEaten of eatenList | healthy: healthiness">
-      <eaten-display (click)="eatenClicked(currentEaten)" [class.selected]="currentEaten === selectedEaten" [eaten]="currentEaten"></eaten-display>
-      <eaten-details *ngIf="currentEaten === selectedEaten" [eaten]="currentEaten"></eaten-details>
+    <div class="col-md-6">
+      <div class="btn-group" role="group">
+      <button type="button" class="btn btn-info"(click)="toggleClickedHealth('all')" value='all'>Everything</button>
+      <button type="button"class="btn btn-success" (click)="toggleClickedHealth('good')" value='good' >The Good</button>
+      <button type="button"class="btn btn-danger" (click)="toggleClickedHealth('bad')" value='bad' >The Bad</button>
+      </div>
+      <div *ngFor="#currentEaten of eatenList | healthy: healthiness">
+        <eaten-display (click)="eatenClicked(currentEaten)" [class.selected]="currentEaten === selectedEaten" [eaten]="currentEaten"></eaten-display>
+        <eaten-details *ngIf="currentEaten === selectedEaten" [eaten]="currentEaten"></eaten-details>
+      </div>
     </div>
   `
 })
@@ -41,7 +43,7 @@ export class EatenListComponent {
   }
   toggleClickedHealth(healthChoice){
     this.healthiness = healthChoice;
-    console.log(this.healthiness);
+  
   }
 
 }
