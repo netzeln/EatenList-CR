@@ -8,7 +8,6 @@ import {AddEatenComponent} from './add-eaten.component';
 @Component({
   selector: 'my-app',
   inputs: ['eaten'],
-  outputs:['newEats'],
   directives: [EatenListComponent, AddEatenComponent],
   template: `
     <div class="jumbotron">
@@ -17,9 +16,7 @@ import {AddEatenComponent} from './add-eaten.component';
     <div class="container">
       <div class="row">
         <h2> I Ate This...</h2>
-        <div class="col-md-6">
-          <add-eaten (newEats)="addRestaurant(newEats)" [newEats]="newEats"></add-eaten>
-        </div>
+
 
         <eaten-list [eatenList]="eaten"  (onEatenSelect)="eatenWasSelected($event)"></eaten-list>
       </div>
@@ -41,8 +38,5 @@ export class AppComponent{
     eatenWasSelected(clickedEaten: Eaten):void{
 
     }
-    addEaten(newEats: Eaten):void{
-      console.log(newEats);
-      this.eaten.push(newEats);
-    }
+
 }

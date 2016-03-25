@@ -41,6 +41,6 @@ export class AddEatenComponent{
       inputDetails.value="";
       inputCalories.value=""
     }
-    // console.log(newEaten);
+    console.log(newEaten);
   }
 }
