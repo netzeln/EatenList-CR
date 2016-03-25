@@ -2,13 +2,14 @@ import { Component, EventEmitter } from 'angular2/core';
 import {Eaten} from './eaten.model';
 import {EatenListComponent} from './eaten-list.component';
 import {AddEatenComponent} from './add-eaten.component';
+import {CalorieCalculateComponent} from './calorie-calculate.component';
 
 
 
 @Component({
   selector: 'my-app',
   inputs: ['eaten'],
-  directives: [EatenListComponent, AddEatenComponent],
+  directives: [EatenListComponent, AddEatenComponent, CalorieCalculateComponent],
   template: `
     <div class="jumbotron">
       <h1>Et, Too</h1>
@@ -18,6 +19,8 @@ import {AddEatenComponent} from './add-eaten.component';
         <h2> I Ate This...</h2>
         <div class="col-md-6">
           <add-eaten (submitNewEaten)="addEaten($event)"></add-eaten>
+
+          <calorie-calc [eatenFoods]="eaten" [countedCalories]="cals"></calorie-calc>
         </div>
 
         <eaten-list [eatenList]="eaten"  (onEatenSelect)="eatenWasSelected($event)"></eaten-list>
