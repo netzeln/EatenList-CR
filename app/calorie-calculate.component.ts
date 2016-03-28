@@ -5,9 +5,9 @@ import {EatenDetailsComponent} from './eaten-details.component';
 @Component({
   selector: 'calorie-calc',
   inputs: ['eatenFoods'],
-  outputs:['countedCalories'],
+  // outputs:['countedCalories'],
   template: `
-  <h2> Current Caloric Consumption: {{countedCalories[0]}}</h2>
+  <h2> Current Caloric Consumption: {{totalCalories}}</h2>
   <button (click)="countCalories(eatenFoods)">Calculate</button>
   `
 })
@@ -15,12 +15,12 @@ import {EatenDetailsComponent} from './eaten-details.component';
 export class CalorieCalculateComponent{
   public eaten: Eaten[];
   // public calorieArray: number[];
-  public countedCalories: EventEmitter<number[]>;
+  // public countedCalories: EventEmitter<number[]>;
   // public countedCalories: number;
   public totalCalories: number = 0;
   constructor(){
 
-    this.countedCalories = new EventEmitter();
+    // this.countedCalories = new EventEmitter();
     // this.countedCalories = 0;
   };
 
@@ -32,10 +32,10 @@ export class CalorieCalculateComponent{
 
     }
     // this.countedCalories = totalCalories;
-    console.log(this.countedCalories);
+    // console.log(this.countedCalories);
     console.log(this.totalCalories);
 
-    this.countedCalories.emit([this.totalCalories]);
+    // this.countedCalories.emit([this.totalCalories]);
       // return this.countedCalories;
   }
 }
